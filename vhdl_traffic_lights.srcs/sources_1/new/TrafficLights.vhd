@@ -32,8 +32,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity TrafficLights is
+    Generic (
+        pedestrians_delay_ms : INTEGER := 8000;   -- Time for the Pedestrians to pass (ms)
+        warning_delay_ms : INTEGER := 4000;       -- Amount of time the traffic light stays in both warning states (ms)
+        cars_delay_ms : INTEGER := 16000         -- Time for the cars to pass (ms)
+    );
     Port ( 
-        100HZ_CLK : in STD_LOGIC;
+        CLK_1KHZ : in STD_LOGIC;
+        RST : in STD_LOGIC;
         PEDESTRIANS_BUTTON : in STD_LOGIC;
         CARS_RED : out STD_LOGIC;
         CARS_YELLOW : out STD_LOGIC;
@@ -52,11 +58,57 @@ architecture Behavioral of TrafficLights is
         CARS_PASS           -- Cars can pass
     );
 
-    signal State : t_TrafficState;
+    signal state : t_TrafficState := PEDESTRIANS_PASS;
+    signal counter : INTEGER := 0;
 
-    
 begin
 
-    process timers
+    process (CLK_1KHZ, RST) is
+        variable reset_counter : boolean := false;
+    begin
+        if(RST = '1') then
+            state <= PEDESTRIANS_PASS;
+            counter <= 0;
+        elsif(rising_edge(CLK_1KHZ)) then
+
+            reset_counter := false;
+            case state is
+                when PEDESTRIANS_PASS =>
+                    if(counter = pedestrians_delay_ms) then
+                        reset_counter := true;
+                        state <= PEDESTRIANS_WARNING;
+                    end if;
+                when PEDESTRIANS_WARNING =>
+                    if(counter = warning_delay_ms) then
+                        reset_counter := true;
+                        state <= CARS_PASS;
+                    end if;
+                when CARS_WARNING =>
+                    if(counter = warning_delay_ms) then
+                        reset_counter := true;
+                        state <= PEDESTRIANS_PASS;
+                    end if;
+                when CARS_PASS =>
+                    if(counter = cars_delay_ms or PEDESTRIANS_BUTTON = '1') then
+                        reset_counter := true;
+                        state <= CARS_WARNING;
+                    end if;
+            end case;
+
+            if(reset_counter) then
+                counter <= 0;
+            else
+                counter <= counter + 1;
+            end if;
+        end if;
+
+    end process;
+    
+    CARS_RED <= '1' when state = PEDESTRIANS_PASS or state = PEDESTRIANS_WARNING else '0';
+    CARS_YELLOW <= '1' when state = CARS_WARNING else '0';
+    CARS_GREEN <= '1' when state = CARS_PASS else '0';
+
+    PEDESTRIANS_RED <= '0' when state = PEDESTRIANS_PASS else '1';
+    PEDESTRIANS_GREEN <= '1' when state = PEDESTRIANS_PASS else '0';
 
 end Behavioral;

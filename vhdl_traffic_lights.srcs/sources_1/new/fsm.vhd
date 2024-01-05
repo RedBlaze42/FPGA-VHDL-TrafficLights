@@ -33,18 +33,24 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity FSM_interface is
     Port (
-        clk : in STD_LOGIC; -- 100mHz clock
+        CLK100MHZ : in STD_LOGIC; -- 100mHz clock
         btnC : in STD_LOGIC; -- Pedestrian button
         btnU : in STD_LOGIC; -- System reset
-        LED : in STD_LOGIC_VECTOR (0 to 15) -- 16 LEDs
+        LED : out STD_LOGIC_VECTOR (0 to 15) -- 16 LEDs
     );
 end FSM_interface;
 
 architecture Behavioral of FSM_interface is
 
     component TrafficLights
+        Generic (
+            pedestrians_delay_ms : integer := 8000;   -- Time for the Pedestrians to pass (ms)
+            warning_delay_ms : integer := 4000;       -- Amount of time the traffic light stays in both warning states (ms)
+            cars_delay_ms : integer := 16000         -- Time for the cars to pass (ms)
+        );
         Port ( 
-            100HZ_CLK : in STD_LOGIC;
+            CLK_1KHZ : in STD_LOGIC;
+            RST : in STD_LOGIC;
             PEDESTRIANS_BUTTON : in STD_LOGIC;
             CARS_RED : out STD_LOGIC;
             CARS_YELLOW : out STD_LOGIC;
@@ -54,19 +60,19 @@ architecture Behavioral of FSM_interface is
         );
     end component;
 
-    signal clk_ms : STD_LOGIC := 1; -- 1kHz clock
-    signal prescaler_counter : INTEGER range 0 to 500 := 0; -- counter for the clock divider 
+    signal clk_ms : STD_LOGIC := '1'; -- 1kHz clock
+    signal prescaler_counter : INTEGER range 0 to 50000 := 0; -- counter for the clock divider 
     signal rst : STD_LOGIC; -- System reset
 begin
     rst <= btnU;
 
-    clock_divider : process (clk, rst) is begin
-        if(rst = '1')
-            prescaler_counter = 0;
-        elsif(rising_edge(clk))
+    clock_divider : process (CLK100MHZ, rst) is begin
+        if(rst = '1') then
+            prescaler_counter <= 0;
+        elsif(rising_edge(CLK100MHZ)) then
             
-            if(prescaler_counter = 500)
-                clk_ms = not clk;  -- Invert the output clock each every 500 ticks of the input clock
+            if(prescaler_counter = 50000) then
+                clk_ms <= not clk_ms;  -- Invert the output clock each every 500 ticks of the input clock
                 prescaler_counter <= 1;
             else
                 prescaler_counter <= prescaler_counter + 1;
@@ -75,14 +81,17 @@ begin
         end if;
     end process;
 
-    TrafficLights_FSM : port map(
-        100HZ_CLK => clk_ms,
+    -- Instantiation of the FSM
+    -- You can map the generics to edit the default delays
+    TrafficLights_FSM : TrafficLights port map(
+        CLK_1KHZ => clk_ms,
+        RST => rst,
         PEDESTRIANS_BUTTON => btnC,
         CARS_RED => LED(0),
         CARS_YELLOW => LED(1),
         CARS_GREEN => LED(2),
         PEDESTRIANS_RED => LED(14),
-        PEDESTRIANS_GREEN => LED(15),
-    )
+        PEDESTRIANS_GREEN => LED(15)
+    );
     
 end Behavioral;
