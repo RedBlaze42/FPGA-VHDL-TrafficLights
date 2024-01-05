@@ -75,9 +75,9 @@ begin
 
     stimulus : process
     begin
-        RST <= '1';
+        RST_tb <= '1';
         wait for 1000 ms;
-        RST <= '0';
+        RST_tb <= '0';
         wait for 42000 ms; -- One and a half full cycles
 
         PEDESTRIANS_BUTTON_tb <= '1';
