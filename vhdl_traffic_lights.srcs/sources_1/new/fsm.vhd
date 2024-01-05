@@ -36,7 +36,7 @@ entity FSM_interface is
         CLK100MHZ : in STD_LOGIC; -- 100mHz clock
         btnC : in STD_LOGIC; -- Pedestrian button
         btnU : in STD_LOGIC; -- System reset
-        LED : out STD_LOGIC_VECTOR (0 to 15) -- 16 LEDs
+        LED : out STD_LOGIC_VECTOR (0 to 15) := (others => '0') -- 16 LEDs
     );
 end FSM_interface;
 

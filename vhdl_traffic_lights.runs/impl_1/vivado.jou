@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Jan  5 02:36:11 2024
-# Process ID: 11208
+# Start of session at: Fri Jan  5 03:56:02 2024
+# Process ID: 35960
 # Current directory: C:/Users/Hugo/OneDrive/FPGA/vhdl_traffic_lights/vhdl_traffic_lights.runs/impl_1
 # Command line: vivado.exe -log FSM_interface.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source FSM_interface.tcl -notrace
 # Log file: C:/Users/Hugo/OneDrive/FPGA/vhdl_traffic_lights/vhdl_traffic_lights.runs/impl_1/FSM_interface.vdi
