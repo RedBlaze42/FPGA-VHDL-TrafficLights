@@ -88,15 +88,15 @@ But optimized to 71 LUTs and 51 FFs after implementation.
 
 ## Simulation
 
-The two testbench files are in the `vhdl_traffic_lights.srcs\sim_1\new` directory
+The two test bench files are in the `vhdl_traffic_lights.srcs\sim_1\new` directory
 
-### Clock divider testbench
+### Clock divider test bench
 
-On this testbench we can see that the output clock frequency is 1 kHz with a duty cycle of 0.5.
+On this test bench we can see that the output clock frequency is 1 kHz with a duty cycle of 0.5.
 
 ![Clock waveform](https://github.com/RedBlaze42/FPGA-VHDL-TrafficLights/blob/main/images/test_bench_3.png?raw=true)
 
-### FSM testbench
+### FSM test bench
 
 #### Button not pressed
 
