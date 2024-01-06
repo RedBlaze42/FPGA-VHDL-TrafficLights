@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.7.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 637 590" style="enable-background:new 0 0 637 590;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#000000;stroke-width:0.9993;stroke-miterlimit:3.9972;}
+	.st2{font-family:'TimesNewRomanPSMT';}
+	.st3{font-size:13.9903px;}
+	.st4{stroke:#000000;stroke-width:0.9993;stroke-miterlimit:3.9972;}
+</style>
+<g id="graph0" transform="scale(1 1) rotate(0) translate(4 586.2779)">
+	<polygon class="st0" points="-4,3.7 -4,-586.2 633,-586.2 633,3.7 	"/>
+	<g id="node1">
+		<ellipse class="st1" cx="294.9" cy="-64.5" rx="64.3" ry="64.3"/>
+		<text transform="matrix(1 0 0 1 257.084 -60.2603)" class="st2 st3">CARS_PASS</text>
+	</g>
+	<g id="node2">
+		<ellipse class="st1" cx="87.7" cy="-271.7" rx="87.9" ry="87.9"/>
+		<text transform="matrix(1 0 0 1 32.8774 -267.5191)" class="st2 st3">CARS_WARNING</text>
+	</g>
+	<g id="edge1">
+		<path class="st1" d="M245.7-105.7c-27.9-26.3-63.1-61.2-93.2-92.2"/>
+		<polygon class="st4" points="149.7,-195.7 145.3,-205.3 154.8,-200.5 		"/>
+		<text transform="matrix(1 0 0 1 79.1054 -145.0182)" class="st2 st3">after cars_delay_ms</text>
+	</g>
+	<g id="edge5">
+		<path class="st1" d="M253.7-113.7c-26.3-27.9-61.2-63.1-92.2-93.2"/>
+		<polygon class="st4" points="158.9,-204.6 154.1,-214.1 163.7,-209.7 		"/>
+		<text transform="matrix(1 0 0 1 192.8333 -182.0153)" class="st2 st3">pedestrian button press</text>
+	</g>
+	<g id="node3">
+		<ellipse class="st1" cx="294.9" cy="-479" rx="103.1" ry="103.1"/>
+		<text transform="matrix(1 0 0 1 228.7173 -474.7774)" class="st2 st3">PEDESTRIANS_PASS</text>
+	</g>
+	<g id="edge2">
+		<path class="st1" d="M149.9-333.9c20.4-20.4,43.3-43.3,64.8-64.8"/>
+		<polygon class="st4" points="212.3,-401.3 221.9,-405.9 217.3,-396.4 		"/>
+		<text transform="matrix(1 0 0 1 46.6641 -370.4766)" class="st2 st3">after warning_delay_ms</text>
+	</g>
+	<g id="node4">
+		<ellipse class="st1" cx="502.2" cy="-271.7" rx="126.7" ry="126.7"/>
+		<text transform="matrix(1 0 0 1 419.0273 -267.5191)" class="st2 st3">PEDESTRIANS_WARNING</text>
+	</g>
+	<g id="edge3">
+		<path class="st1" d="M368-405.9c12,12,24.6,24.6,37,37"/>
+		<polygon class="st4" points="407.8,-371.1 412.3,-361.6 402.8,-366.2 		"/>
+		<text transform="matrix(1 0 0 1 375.9846 -402.5939)" class="st2 st3">after pedestrians_delay_ms</text>
+	</g>
+	<g id="edge4">
+		<path class="st1" d="M412.5-182c-22.2,22.2-45.3,45.3-65.1,65.1"/>
+		<polygon class="st4" points="349.8,-114.4 340.3,-109.8 344.9,-119.4 		"/>
+		<text transform="matrix(1 0 0 1 372.0266 -128.7366)" class="st2 st3">after warning_delay_ms</text>
+	</g>
+</g>
+</svg>
