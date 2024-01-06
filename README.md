@@ -28,7 +28,7 @@ Generic (
 
 ## FSM Diagram
 
-![FSM_Diagram](https://raw.githubusercontent.com/RedBlaze42/RP2040-C-TrafficLights/main/images/FSM_diagram.svg)
+![FSM_Diagram](https://raw.githubusercontent.com/RedBlaze42/FPGA-VHDL-TrafficLights/main/images/FSM_diagram.svg)
 
 ## Video demonstration
 
