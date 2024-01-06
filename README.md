@@ -48,7 +48,7 @@ The output LEDs are mapped using combinatorial logic.
 
 ## RTL Diagram
 
-Here is the detailed RTL diagram of the circuit.
+Here is the detailed RTL diagram of the circuit. Click on the image to see the raw file.
 
 ![https://raw.githubusercontent.com/RedBlaze42/FPGA-VHDL-TrafficLights/main/images/RTL_diagram.svg](https://raw.githubusercontent.com/RedBlaze42/FPGA-VHDL-TrafficLights/main/images/RTL_diagram.svg)
 
@@ -90,7 +90,13 @@ But optimized to 71 LUTs and 51 FFs after implementation.
 
 ## Simulation
 
+The two testbench files are in the `vhdl_traffic_lights.srcs\sim_1\new` directory
+
 ### Clock divider testbench
+
+On this testbench we can see that the output clock frequency is 1 kHz with a duty cycle of 0.5.
+
+![Clock waveform](https://github.com/RedBlaze42/FPGA-VHDL-TrafficLights/blob/main/images/test_bench_3.png?raw=true)
 
 ### FSM testbench
 
