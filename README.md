@@ -68,8 +68,6 @@ The input clock is set at 100 MHz
 
 ## Logic ressources utilization
 
-On the 
-
 | Ref Name | Used | Functional Category |
 |----------|------|---------------------|
 | FDCE     |   50 |        Flop & Latch |
